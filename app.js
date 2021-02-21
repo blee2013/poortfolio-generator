@@ -96,15 +96,21 @@ const promptProject = portfolioData => {
         },
         {
             type: 'confirm',
-            name: 'feature',
-            message: 'Would you like to feature this project?',
-            default: false
+            name: 'confirmAbout',
+            message: 'Would you like to enter some information about yourself for an "About" section?',
+            default: true
         },
         {
-            type: 'confirm',
-            name: 'confirmAddProject',
-            message: 'Would you like to enter another project?',
-            default: false
+            type: 'input',
+            name: 'about',
+            message: 'Provide some information about yourself:',
+            when: ({ confirmAbout}) => {
+                if (confirmAbout) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
 
     ])
